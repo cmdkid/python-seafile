@@ -24,7 +24,7 @@ def test_list_repos(client):
         assert len(repo.id) == 36
 
 def _create_repo(client, password=None):
-    repo_name = '测试资料库-%s' % randstring()
+    repo_name = 'testLib-%s' % randstring()
     repo = client.repos.create_repo(repo_name, password=password)
 
     assert repo.name == repo_name

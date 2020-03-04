@@ -7,7 +7,7 @@ from tests.utils import randstring, datafile, filesize
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_create_delete_file_dir(repo, parentpath):
     rootdir = repo.get_dir('/')
@@ -46,7 +46,7 @@ def test_create_delete_file_dir(repo, parentpath):
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_upload_file(repo, parentpath):
     rootdir = repo.get_dir('/')
@@ -59,10 +59,10 @@ def test_upload_file(repo, parentpath):
 
     fname = 'aliedit.tar.gz'
     fpath = datafile(fname)
-    with open(fpath, 'r') as fp:
+    with open(fpath, 'rb') as fp:
         testfile = parentdir.upload(fp, fname)
 
-    with open(fpath, 'r') as fp:
+    with open(fpath, 'rb') as fp:
         fcontent = fp.read()
 
     assert testfile.size == filesize(fpath)
@@ -85,14 +85,14 @@ def test_upload_string_as_file_content(repo):
     # test pass as string as file content when upload file
     rootdir = repo.get_dir('/')
     fname = 'testfile-%s' % randstring()
-    fcontent = 'line 1\nline 2\n\r'
+    fcontent = b'line 1\nline 2\n\r'
     f = rootdir.upload(fcontent, fname)
     assert f.name == fname
     assert f.get_content() == fcontent
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    #'/测试目录一-%s' % randstring()
+    #'/testDir-%s' % randstring()
     '/qweqwe%s' % randstring()
 ])
 def test_rename_file(repo, parentpath):
@@ -117,7 +117,7 @@ def test_rename_file(repo, parentpath):
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_rename_folder(repo, parentpath):
     rootdir = repo.get_dir('/')
@@ -141,7 +141,7 @@ def test_rename_folder(repo, parentpath):
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_copy_file(repo, parentpath):
     rootdir = repo.get_dir('/')
@@ -166,7 +166,7 @@ def test_copy_file(repo, parentpath):
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_copy_file_to_other_repo(client, repo, parentpath):
     rootdir = repo.get_dir('/')
@@ -196,7 +196,7 @@ def test_copy_file_to_other_repo(client, repo, parentpath):
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_copy_folder(repo, parentpath):
     rootdir = repo.get_dir('/')
@@ -223,7 +223,7 @@ def test_copy_folder(repo, parentpath):
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_copy_folder_to_other_repo(client, repo, parentpath):
     rootdir = repo.get_dir('/')
@@ -255,7 +255,7 @@ def test_copy_folder_to_other_repo(client, repo, parentpath):
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_move_file(repo, parentpath):
     rootdir = repo.get_dir('/')
@@ -281,7 +281,7 @@ def test_move_file(repo, parentpath):
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_move_file_to_other_repo(client, repo, parentpath):
     rootdir = repo.get_dir('/')
@@ -312,7 +312,7 @@ def test_move_file_to_other_repo(client, repo, parentpath):
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_move_folder(repo, parentpath):
     rootdir = repo.get_dir('/')
@@ -337,7 +337,7 @@ def test_move_folder(repo, parentpath):
 
 @pytest.mark.parametrize('parentpath', [
     '/',
-    '/测试目录一-%s' % randstring()
+    '/testDir-%s' % randstring()
 ])
 def test_move_folder_to_other_repo(client, repo, parentpath):
     rootdir = repo.get_dir('/')
