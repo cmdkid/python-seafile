@@ -1,12 +1,12 @@
 #!/bin/bash
 
-: ${PYTHON=python}
+: ${PYTHON=python3}
 
-: ${SEAFILE_TEST_SERVER_ADDRESS="http://127.0.0.1:8000"}
+: ${SEAFILE_TEST_SERVER_ADDRESS="http://127.0.0.1:80"}
 : ${SEAFILE_TEST_USERNAME="test@seafiletest.com"}
 : ${SEAFILE_TEST_PASSWORD="testtest"}
-: ${SEAFILE_TEST_ADMIN_USERNAME="admin@seafiletest.com"}
-: ${SEAFILE_TEST_ADMIN_PASSWORD="adminadmin"}
+: ${SEAFILE_TEST_ADMIN_USERNAME="me@example.com"}
+: ${SEAFILE_TEST_ADMIN_PASSWORD="asecret"}
 
 export SEAFILE_TEST_SERVER_ADDRESS
 export SEAFILE_TEST_USERNAME
